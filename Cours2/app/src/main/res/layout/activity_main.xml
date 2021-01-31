@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="user"
+            type="jp.jerome.cours2.User"/>
+        <variable
+            name="activity"
+            type="jp.jerome.cours2.MainActivity"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/firstname_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.firstName}"
+            android:background="#0B302C"
+            android:visibility="@{ user.firstName.empty ? View.GONE : View.VISIBLE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Hello World!"/>
+
+        <TextView
+            android:id="@+id/lastname_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/design_default_color_error"
+            android:text="@{user.lastName}"
+            android:visibility="@{ user.lastName.empty ? View.GONE : View.VISIBLE }"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/firstname_textview"
+            tools:text="Hello"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Click me!"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lastname_textview"
+            android:onClick="@{() -> activity.clickMe() }"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
